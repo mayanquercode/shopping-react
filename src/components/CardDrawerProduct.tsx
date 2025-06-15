@@ -1,7 +1,7 @@
 import { Box, IconButton, Typography } from "@mui/material";
 import { Add, Remove, Delete } from "@mui/icons-material";
-import type { Product } from "../shooping/types";
-import useHandleCart from "../shooping/hooks/useHandleCart";
+import type { Product } from "../features/shooping/types";
+import useHandleCart from "../features/shooping/hooks/useHandleCart";
 
 
 type Props = {

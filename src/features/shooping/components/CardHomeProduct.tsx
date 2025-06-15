@@ -3,9 +3,9 @@ import GradeIcon from '@mui/icons-material/Grade';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ShoppingCart from '@mui/icons-material/ShoppingCart';
 
-import type { Product } from '../features/shooping/types';
+import type { Product } from '../shooping/types';
 import { useState } from 'react';
-import useHandleCart from '../features/shooping/hooks/useHandleCart';
+import useHandleCart from '../shooping/hooks/useHandleCart';
 
 const maxRating = 5
 

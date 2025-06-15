@@ -2,8 +2,8 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import Badge, { badgeClasses } from '@mui/material/Badge';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCartOutlined';
-import useInfoCart from '../shooping/hooks/useInfoCart';
-import useDrawerCart from '../shooping/hooks/useDrawerCart';
+import useInfoCart from '../features/shooping/hooks/useInfoCart';
+import useDrawerCart from '../features/shooping/hooks/useDrawerCart';
 
 const CartBadge = styled(Badge)`
   & .${badgeClasses.badge} {

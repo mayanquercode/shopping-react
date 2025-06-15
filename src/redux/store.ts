@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import shoopingReducer from "../shooping/redux/shoopingSlice";
+import shoopingReducer from "../features/shooping/redux/shoopingSlice";
 
 export const store = configureStore({
   reducer: {

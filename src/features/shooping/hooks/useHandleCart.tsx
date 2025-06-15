@@ -1,4 +1,4 @@
-import { useAppDispatch } from "../../redux/hooks";
+import { useAppDispatch } from "../../../redux/hooks";
 import { incrementCart, decrementCart, addIdProduct, removeIdProduct, clearCart } from "../redux/shoopingSlice"
 
 export default function useHandleCart() {
