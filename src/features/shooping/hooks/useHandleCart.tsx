@@ -1,7 +1,8 @@
-import { useAppDispatch } from "../../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { incrementCart, decrementCart, addIdProduct, removeIdProduct, clearCart } from "../redux/shoopingSlice"
 
 export default function useHandleCart() {
+  const { idProducts } = useAppSelector(state => state.shooping)
   const dispatch = useAppDispatch()
 
   const handleIncrementCart = (id: number) => {
@@ -18,10 +19,15 @@ export default function useHandleCart() {
     dispatch(clearCart())
   }
 
+  const handleIsInCart = (productId: number) => {
+    return idProducts.includes(productId);
+  };
+
   return {
     increment: handleIncrementCart,
     decrement: handleDecrementCart,
-    clearAll: handleClearAllCart
+    clearAll: handleClearAllCart,
+    isInCart: handleIsInCart,
   }
 
 }

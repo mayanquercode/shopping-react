@@ -4,7 +4,6 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ShoppingCart from '@mui/icons-material/ShoppingCart';
 
 import type { Product } from '../features/shooping/types';
-import { useState } from 'react';
 import useHandleCart from '../features/shooping/hooks/useHandleCart';
 
 const maxRating = 5
@@ -14,13 +13,12 @@ type Props = {
 }
 
 function CardHomeProduct({ product }: Props) {
+  const { increment, decrement, isInCart } = useHandleCart()
 
-  const { increment, decrement } = useHandleCart()
-  const [addToCart, setAddToCart] = useState<boolean>(false)
+  const isProductInCart = isInCart(product.id)
 
   const handleClickAddToCart = () => {
-    setAddToCart(!addToCart)
-    if (addToCart) {
+    if (isProductInCart) {
       decrement(product.id)
     } else {
       increment(product.id)
@@ -77,12 +75,12 @@ function CardHomeProduct({ product }: Props) {
         </Box>
         <Box textAlign={'center'} sx={{ marginTop: 'auto' }}>
           <Button
-            variant={addToCart ? 'contained' : 'outlined'}
+            variant={isProductInCart ? 'contained' : 'outlined'}
             fullWidth
-            startIcon={addToCart ? <ShoppingCart /> : <AddShoppingCartIcon />}
+            startIcon={isProductInCart ? <ShoppingCart /> : <AddShoppingCartIcon />}
             onClick={handleClickAddToCart}
           >
-            {addToCart ? 'Agregado' : 'Agregar'}
+            {isProductInCart ? 'Agregado' : 'Agregar'}
           </Button>
         </Box>
       </Grid>
