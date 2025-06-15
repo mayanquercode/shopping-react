@@ -4,7 +4,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ShoppingCart from '@mui/icons-material/ShoppingCart';
 
 import type { Product } from '../features/shooping/types';
-import useHandleCart from '../features/shooping/hooks/useHandleCart';
+import useManageCartHome from '../features/shooping/hooks/useManageCartHome';
 
 const maxRating = 5
 
@@ -13,7 +13,7 @@ type Props = {
 }
 
 function CardHomeProduct({ product }: Props) {
-  const { increment, decrement, isInCart } = useHandleCart()
+  const { decrement, increment, isInCart } = useManageCartHome()
 
   const isProductInCart = isInCart(product.id)
 

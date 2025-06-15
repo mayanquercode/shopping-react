@@ -1,8 +1,7 @@
 import { Box, IconButton, Typography } from "@mui/material";
 import { Add, Remove, Delete } from "@mui/icons-material";
 import type { Product } from "../features/shooping/types";
-import useHandleCart from "../features/shooping/hooks/useHandleCart";
-
+import useManageCartCards from "../features/shooping/hooks/useManageCartCards";
 
 type Props = {
   product: Product
@@ -10,11 +9,7 @@ type Props = {
 
 function CardDrawerProduct({ product }: Props) {
 
-  const { decrement } = useHandleCart()
-
-  const handleClickRemoveToCart = () => {
-    decrement(product.id)
-  }
+  const { cartItems, addOneToCart, removeOneFromCart, removeToCart } = useManageCartCards()
 
   return (
     <Box
@@ -54,17 +49,17 @@ function CardDrawerProduct({ product }: Props) {
 
         {/* Controles de cantidad */}
         <Box display="flex" alignItems="center" gap={1} mt={0.5}>
-          <IconButton size="small" color="primary">
+          <IconButton size="small" color="primary" onClick={() => removeOneFromCart(product.id)}>
             <Remove fontSize="small" />
           </IconButton>
-          <Typography fontSize={13}>1</Typography>
-          <IconButton size="small" color="primary">
+          <Typography fontSize={13}>{cartItems.find(item => item.id === product.id)?.quantity ?? '0'}</Typography>
+          <IconButton size="small" color="primary" onClick={() => addOneToCart(product.id)}>
             <Add fontSize="small" />
           </IconButton>
         </Box>
       </Box>
 
-      <IconButton size="small" color="error" onClick={handleClickRemoveToCart}>
+      <IconButton size="small" color="error" onClick={() => removeToCart(product.id)}>
         <Delete fontSize="small" />
       </IconButton>
     </Box>

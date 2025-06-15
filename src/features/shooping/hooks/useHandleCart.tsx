@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { incrementCart, decrementCart, addIdProduct, removeIdProduct, clearCart } from "../redux/shoopingSlice"
 
 export default function useHandleCart() {
-  const { idProducts } = useAppSelector(state => state.shooping)
+  const { cartItems } = useAppSelector(state => state.shooping)
   const dispatch = useAppDispatch()
 
   const handleIncrementCart = (id: number) => {
@@ -20,7 +20,12 @@ export default function useHandleCart() {
   }
 
   const handleIsInCart = (productId: number) => {
-    return idProducts.includes(productId);
+    const findItem = cartItems.find(item => item.id === productId)
+
+    if (!findItem) {
+      return false;
+    }
+    return true;
   };
 
   return {
