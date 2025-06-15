@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import CardHomeProduct from "./CardHomeProduct";
-import useGetAllProducts from "../features/shooping/hooks/useGetAllProducts";
+import useGetAllProducts from "../shooping/hooks/useGetAllProducts";
 
 function ListProductsHome() {
   const { products } = useGetAllProducts()

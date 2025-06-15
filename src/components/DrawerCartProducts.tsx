@@ -1,9 +1,9 @@
 import { Box, Button, Container, Divider, Drawer, IconButton, Typography } from "@mui/material";
 import { Close } from "@mui/icons-material";
-import useDrawerCart from "../shooping/hooks/useDrawerCart";
-import useGetProductCart from "../shooping/hooks/useGetProductCart";
+import useDrawerCart from "../features/shooping/hooks/useDrawerCart";
+import useGetProductCart from "../features/shooping/hooks/useGetProductCart";
 import CardDrawerProduct from "./CardDrawerProduct";
-import useHandleCart from "../shooping/hooks/useHandleCart";
+import useHandleCart from "../features/shooping/hooks/useHandleCart";
 
 function DrawerCartProducts() {
   const { isCartOpen, toggle } = useDrawerCart()
