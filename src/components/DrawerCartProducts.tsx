@@ -3,19 +3,19 @@ import { Close } from "@mui/icons-material";
 import useDrawerCart from "../features/shooping/hooks/useDrawerCart";
 import useGetProductCart from "../features/shooping/hooks/useGetProductCart";
 import CardDrawerProduct from "./CardDrawerProduct";
-import useHandleCart from "../features/shooping/hooks/useHandleCart";
+import useManageCart from "../features/shooping/hooks/useManageCart";
 
 function DrawerCartProducts() {
   const { isCartOpen, toggle } = useDrawerCart()
   const { products } = useGetProductCart();
-  const { clearAll } = useHandleCart()
+  const { clearCart, total } = useManageCart()
 
   const toggleDrawer = () => {
     toggle()
   };
 
   const handleClearAllCart = () => {
-    clearAll()
+    clearCart()
   }
 
 
@@ -68,15 +68,12 @@ function DrawerCartProducts() {
           <Container>
             <Box display="flex" justifyContent="space-between" mb={2}>
               <Typography fontWeight={600}>Total:</Typography>
-              <Typography fontWeight={600}>$0.00</Typography>
+              <Typography fontWeight={600}>${total.toFixed(2)}</Typography>
             </Box>
 
             <Box display="flex" flexDirection="column" gap={1}>
               <Button variant="outlined" color="error" fullWidth onClick={handleClearAllCart}>
                 Limpiar carrito
-              </Button>
-              <Button variant="contained" color="primary" fullWidth>
-                Pagar
               </Button>
             </Box>
           </Container>

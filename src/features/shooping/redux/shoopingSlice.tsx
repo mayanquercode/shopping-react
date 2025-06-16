@@ -9,14 +9,12 @@ interface CartItem {
 interface ShoopingState {
   counter: number
   isCartOpen: boolean
-  idProducts: number[]
   cartItems: CartItem[]
 }
 
 const initialState: ShoopingState = {
   counter: 0,
   isCartOpen: false,
-  idProducts: [],
   cartItems: []
 }
 
@@ -65,18 +63,8 @@ export const shoopingSlice = createSlice({
     toggleCart: (state) => {
       state.isCartOpen = !state.isCartOpen
     },
-    addIdProduct: (state, action: PayloadAction<number>) => {
-      const id = action.payload;
-      if (!state.idProducts.includes(id)) {
-        state.idProducts.push(id);
-      }
-    },
-    removeIdProduct: (state, action: PayloadAction<number>) => {
-      const id = action.payload;
-      state.idProducts = state.idProducts.filter(productId => productId !== id);
-    },
     clearCart: (state) => {
-      state.idProducts = [];
+      state.cartItems = [];
       state.counter = 0
       state.isCartOpen = !state.isCartOpen // mover en fucturas funcionalidades
     }
@@ -85,12 +73,10 @@ export const shoopingSlice = createSlice({
 
 
 export const {
-  addIdProduct,
   clearCart,
   incrementCart,
   decrementCart,
   toggleCart,
-  removeIdProduct,
   addProductToCart,
   removeProductCompletely,
   removeProductToCart
